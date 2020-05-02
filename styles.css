@@ -1,0 +1,14 @@
+.menu{
+    background-color: pink;
+    padding: 5px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 0.8em;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+input{
+    width: 50px;
+}

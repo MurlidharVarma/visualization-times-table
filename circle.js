@@ -1,7 +1,7 @@
 class Circle{
 
 
-    constructor(timesNumber, modular, centerX, centerY, dia){
+    constructor(timesNumber, modular, centerX, centerY, dia, render=true){
         this.centerX = centerX;
         this.centerY = centerY;
 
@@ -11,21 +11,26 @@ class Circle{
         this.timesNumber = timesNumber;
         this.modular = modular;
 
-        this.DEGREE_INCREMENT = 360/(this.modular);
         this.DEGREE_REF_POINT = [-this.radius,0];
+        this.startModularValue=0;
 
         this.TEXT_SPACING = 15;
-        this.COLORS = ['red', 'green', 'blue', 'black', 'magenta'];
+        this.COLORS = ['red','green', 'blue', 'black', 'magenta'];
+        this.SELECTED_COLOR=null;
 
-        this.render();
+        if(render){
+            this.render();
+        }
     }
 
     render(){
+        this.DEGREE_INCREMENT = 360/(this.modular);
+
         push();
             translate(this.centerX, this.centerY);
             ellipse(0,0,this.diameter, this.diameter);
 
-            for(let i=0; i<this.modular; i+=1){
+            for(let i=this.startModularValue; i<this.modular; i+=1){
 
                 //render point labels
                 this.renderPointLabels(i);
@@ -34,6 +39,7 @@ class Circle{
                 this.drawModularLines(i)
             }
         pop();
+        this.renderTitle();
     }
 
     calculateNthPointCoordinate(n){
@@ -64,6 +70,50 @@ class Circle{
     }
 
     getRandomColor(n){
-        return this.COLORS[n % this.COLORS.length];
+        this.SELECTED_COLOR = this.COLORS[n % this.COLORS.length];
+        return this.SELECTED_COLOR;
+    }
+
+    renderTitle(){
+        push()
+            translate(this.centerX-this.radius,this.centerY-this.radius)
+            fill(this.SELECTED_COLOR);
+            circle(0,0,this.radius*0.2);
+            fill("white")
+            textSize(this.radius*0.1);
+            textAlign(CENTER,CENTER);
+            text(this.timesNumber,0,0);
+        pop()
+    }
+
+    setTimesNumber(num,render=true){
+        this.timesNumber = num;
+        if(render){
+            this.render();
+        }
+    }
+
+    setModular(num,render=true){
+        this.modular = num;
+        if(render){
+            this.render();
+        }
+    }
+
+    renderSpokes(i){
+        this.DEGREE_INCREMENT = 360/(this.modular);
+
+        push();
+            translate(this.centerX, this.centerY);
+            if(i % this.modular == 0){
+                this.timesNumber++;
+                ellipse(0,0,this.diameter, this.diameter);
+            }
+            //draw connecting lines based on times
+            this.drawModularLines(i)
+        pop();
+
+        this.renderTitle();
+
     }
 }

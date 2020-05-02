@@ -14,16 +14,16 @@
   </style>
   <script src="p5.min.js"></script>
   <script src="circle.js"></script>
-  <script src="sketch.js"></script>
+  <script src="animate.js"></script>
 </head>
 
 <body>
 <div class="menu">
   <span class="left">
-    Number of Times Table Circles: <input id="numberOfCircles" type="number" value="10" onchange="configChange()" />
-    Circle Division Density: <input id="modularNumber"   type="number" value="200" onchange="configChange()" /> 
+      Circle Division Density: <input id="modularNumber"   type="number" value="200" onchange="configChange()" /> 
+      <input id="spokeAnimation" type="checkbox" checked onchange="configChange()" style="width:20px;margin:10px">Spoke Animation
   </span>
-  <a href="./animate.html">Animate</a>
+  <a href="./index.html">Home</a>
 </div>
 <div id="canvas-container">
 
