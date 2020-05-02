@@ -1,5 +1,5 @@
 class Circle{
-    TEXT_SPACING = 15;
+
 
     constructor(timesNumber, modular, centerX, centerY, dia){
         this.centerX = centerX;
@@ -13,6 +13,9 @@ class Circle{
 
         this.DEGREE_INCREMENT = 360/(this.modular);
         this.DEGREE_REF_POINT = [-this.radius,0];
+
+        this.TEXT_SPACING = 15;
+        this.COLORS = ['red', 'green', 'blue', 'black', 'magenta'];
 
         this.render();
     }
@@ -55,8 +58,12 @@ class Circle{
         let startPoint = this.calculateNthPointCoordinate(n);
         let destPoint = this.calculateNthPointCoordinate(destN);
 
-        stroke('red');
+        stroke(this.getRandomColor(this.timesNumber));
         strokeWeight(0.1);
         line(startPoint[0],startPoint[1],destPoint[0],destPoint[1]);
+    }
+
+    getRandomColor(n){
+        return this.COLORS[n % this.COLORS.length];
     }
 }
