@@ -10,7 +10,8 @@ This project is build entirely using P5js. It's such a great library!
 
 Hope you like it!
 
-[![Watch the video](/demo.png)](https://youtu.be/WWcAbI1-Q90)
+Watch demo video.
+[![Watch the video](https://img.youtube.com/vi/WWcAbI1-Q90/maxresdefault.jpg)](https://www.youtube.com/watch?v=WWcAbI1-Q90)
 
 
 
