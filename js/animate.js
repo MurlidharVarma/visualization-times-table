@@ -28,10 +28,11 @@ function configChange(){
 }
 
 function setup(){
-  CIRCLE_DIA = Math.min(windowWidth,windowHeight);
+  let minSize = Math.min(windowWidth,windowHeight);
+  CIRCLE_DIA = minSize - (2*SPACE_BETWEEN_CIRCLE);
   CIRCLE_RADIUS = CIRCLE_DIA/2;
   
-  createCanvas(windowWidth, Math.max(windowHeight,(CIRCLE_DIA+(2*(SPACE_BETWEEN_CIRCLE+10)))*(CIRCLE_NO/CIRCLES_PER_ROW)));
+  createCanvas(minSize, minSize);
   angleMode(DEGREES)
 
   CIRCLE = new Circle(ANIME_INIT+2,MODULAR,CIRCLE_RADIUS+SPACE_BETWEEN_CIRCLE,CIRCLE_RADIUS+SPACE_BETWEEN_CIRCLE,CIRCLE_DIA,false);

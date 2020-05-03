@@ -103,7 +103,6 @@ class Circle{
 
     renderSpokes(i, incrementNextTimesNumber=true){
         this.DEGREE_INCREMENT = 360/(this.modular);
-        console.log(this.timesNumber);
         push();
             translate(this.centerX, this.centerY);
             if(i % this.modular == 0 && incrementNextTimesNumber){

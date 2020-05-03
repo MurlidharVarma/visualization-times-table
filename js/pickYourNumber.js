@@ -29,10 +29,11 @@ function configChange(){
 }
 
 function setup(){
-  CIRCLE_DIA = Math.min(windowWidth,windowHeight);
+  let minSize = Math.min(windowWidth,windowHeight);
+  CIRCLE_DIA = minSize - (2*PADDING);
   CIRCLE_RADIUS = CIRCLE_DIA/2;
   
-  CANVAS = createCanvas(windowWidth,windowHeight+(2*PADDING));
+  CANVAS = createCanvas(minSize,minSize);
   angleMode(DEGREES)
 
   CIRCLE = new Circle(TIMES_NUMBER,MODULAR,CIRCLE_RADIUS+PADDING,CIRCLE_RADIUS+PADDING,CIRCLE_DIA,false);
@@ -58,7 +59,7 @@ function drawSpokeAnimation(){
   CIRCLE.renderSpokes(ANIME_INIT, false);
   if(ANIME_INIT%MODULAR == 0){
     FRAME_RATE=0;
-    noLoop();
+    // noLoop();
   }
 }
 
