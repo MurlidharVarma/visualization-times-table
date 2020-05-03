@@ -5,24 +5,25 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Times Table Visualization</title>
-  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="../css/styles.css" />
   <style>
     body {
       padding: 0;
       margin: 0;
     }
   </style>
-  <script src="p5.min.js"></script>
-  <script src="circle.js"></script>
-  <script src="animate.js"></script>
+  <script src="../js/p5.min.js"></script>
+  <script src="../js/circle.js"></script>
+  <script src="../js/pickYourNumber.js"></script>
 </head>
 
 <body>
 <div class="menu">
   <span class="left">
+      Enter Your Favourite Times Number: <input id="myTimesNumber" type="number" value="11" onchange="configChange()" />
       Circle Division Density: <input id="modularNumber"   type="number" value="200" onchange="configChange()" /> 
-      <input id="spokeAnimation" type="checkbox" checked onchange="configChange()" style="width:20px;">Spoke Animation
-      <a style="margin-left:10px" href="./index.html">Home</a>
+      <input id="spokeAnimation" type="checkbox" onchange="configChange()" style="width:20px;">Spoke Animation
+      <a style="margin-left:10px" href="../index.html">Home</a>
   </span>
   <span class="credit">By Murlidhar Varma</span>
 </div>

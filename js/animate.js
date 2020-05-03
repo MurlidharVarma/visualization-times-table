@@ -18,13 +18,13 @@ function configChange(){
   CIRCLE.setModular(MODULAR,false);
   SPOKED_ANIMATION = spokeAnimation;
   if(spokeAnimation){
-    // CIRCLE.setTimesNumber(1,false);
     FRAME_RATE=60;
   }else{
-    // CIRCLE.setTimesNumber(1);
     FRAME_RATE=10;
   }
   ANIME_INIT=0
+  CIRCLE.clearSpokes();
+  clear();
 }
 
 function setup(){
@@ -35,7 +35,7 @@ function setup(){
   angleMode(DEGREES)
 
   CIRCLE = new Circle(ANIME_INIT+2,MODULAR,CIRCLE_RADIUS+SPACE_BETWEEN_CIRCLE,CIRCLE_RADIUS+SPACE_BETWEEN_CIRCLE,CIRCLE_DIA,false);
-  // noLoop();
+  CIRCLE.clearSpokes();
   frameRate(FRAME_RATE);
 }
 
@@ -50,6 +50,7 @@ function draw() {
 }
 
 function drawAnimation(){
+  clear();
   CIRCLE.setTimesNumber(ANIME_INIT);
 }
 

@@ -52,7 +52,8 @@ class Circle{
     renderPointLabels(n){
         push();
             noStroke();
-            textSize(7)
+            textSize(Math.min(1000/this.modular,7))
+            strokeWeight(0.01)
             rotate(n*this.DEGREE_INCREMENT)
             text(round(n,1),-this.radius-this.TEXT_SPACING,0)
         pop();
@@ -76,7 +77,7 @@ class Circle{
 
     renderTitle(){
         push()
-            translate(this.centerX-this.radius,this.centerY-this.radius)
+            translate(this.centerX-this.radius+10,this.centerY-this.radius+10)
             fill(this.SELECTED_COLOR);
             circle(0,0,this.radius*0.2);
             fill("white")
@@ -100,20 +101,27 @@ class Circle{
         }
     }
 
-    renderSpokes(i){
+    renderSpokes(i, incrementNextTimesNumber=true){
         this.DEGREE_INCREMENT = 360/(this.modular);
-
+        console.log(this.timesNumber);
         push();
             translate(this.centerX, this.centerY);
-            if(i % this.modular == 0){
+            if(i % this.modular == 0 && incrementNextTimesNumber){
                 this.timesNumber++;
+                clear();
                 ellipse(0,0,this.diameter, this.diameter);
             }
+            this.renderPointLabels(i);
+
             //draw connecting lines based on times
             this.drawModularLines(i)
         pop();
+    }
 
-        this.renderTitle();
-
+    clearSpokes(){
+        push();
+            translate(this.centerX, this.centerY);
+            ellipse(0,0,this.diameter, this.diameter);
+        pop()
     }
 }
