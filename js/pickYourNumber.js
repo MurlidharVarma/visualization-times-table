@@ -10,6 +10,7 @@ let SPOKED_ANIMATION = false;
 let FRAME_RATE = 60;
 let MODULAR = 200;
 TIMES_NUMBER = 11;
+let CANVAS;
 
 function configChange(){
   MODULAR = document.querySelector("#modularNumber").value;
@@ -31,7 +32,7 @@ function setup(){
   CIRCLE_DIA = Math.min(windowWidth,windowHeight);
   CIRCLE_RADIUS = CIRCLE_DIA/2;
   
-  createCanvas(windowWidth,windowHeight+(2*PADDING));
+  CANVAS = createCanvas(windowWidth,windowHeight+(2*PADDING));
   angleMode(DEGREES)
 
   CIRCLE = new Circle(TIMES_NUMBER,MODULAR,CIRCLE_RADIUS+PADDING,CIRCLE_RADIUS+PADDING,CIRCLE_DIA,false);
@@ -59,4 +60,8 @@ function drawSpokeAnimation(){
     FRAME_RATE=0;
     noLoop();
   }
+}
+
+function save(){
+  saveCanvas(CANVAS,`${TIMES_NUMBER}-${MODULAR}-MurlidharVarma`, 'png');
 }
